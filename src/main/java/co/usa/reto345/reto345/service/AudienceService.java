@@ -50,5 +50,42 @@ public class AudienceService {
 
     }
 
+    public Audience update(Audience audi){
+        if(audi.getId()!=null){
+            Optional<Audience> audiaux=audienceRepository.getAudience(audi.getId());
+            if(!audiaux.isEmpty()){
+                if(audi.getName()!=null){
+                    audiaux.get().setName(audi.getName());
+                }
+                if(audi.getOwner()!=null){
+                    audiaux.get().setOwner(audi.getOwner());
+                }
+                if(audi.getCapacity()!=null){
+                    audiaux.get().setCapacity(audi.getCapacity());
+                }
+                if(audi.getDescription()!=null){
+                    audiaux.get().setDescription(audi.getDescription());
+                }
+                if(audi.getCategory()!=null){
+                    audiaux.get().setCategory(audi.getCategory());
+                }
+                audienceRepository.save(audiaux.get());
+                return audiaux.get();
+            }else{
+                return audi;
+            }
+        }else{
+            return audi;
+        }
+    }
+
+    public boolean deleteAudience(int audienceId) {
+        Boolean aBoolean = getAudience(audienceId).map(audi -> {
+            audienceRepository.delete(audi);
+            return true;
+        }).orElse(false);
+        return aBoolean;
+    }
+
     
 }

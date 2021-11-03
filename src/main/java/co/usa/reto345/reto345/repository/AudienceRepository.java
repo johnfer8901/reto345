@@ -32,5 +32,17 @@ public class AudienceRepository {
 
         return audienceCrudRepository.save(audi);
     }
+
+    /*public Audience update(Audience audi){
+
+        return audienceCrudRepository.update(audi);
+    }*/
+
+    public void delete(Audience audi){
+
+        audienceCrudRepository.delete(audi);
+    }
+
+
 }  
 

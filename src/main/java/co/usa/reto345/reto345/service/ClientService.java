@@ -48,5 +48,35 @@ public class ClientService {
 
 
     }
+
+    public Client update(Client clt){
+        if(clt.getIdClient()!=null){
+            Optional<Client>cltaux=clientRepository.getClient(clt.getIdClient());
+            if(!cltaux.isEmpty()){
+                if(clt.getName()!=null){
+                    cltaux.get().setName(clt.getName());
+                }
+                if(clt.getAge()!=null){
+                    cltaux.get().setAge(clt.getAge());
+                }
+                if(clt.getPassword()!=null){
+                    cltaux.get().setPassword(clt.getPassword());
+                }
+                clientRepository.save(cltaux.get());
+                return cltaux.get();
+            }else{
+                return clt;
+            }
+        }else{
+            return clt;
+        }
+    }
+    public boolean deleteClient(int clientId) {
+        Boolean cltaux=getClient(clientId).map(clt -> {
+            clientRepository.delete(clt);
+            return true;
+        }).orElse(false);
+        return cltaux;
+    }
     
 }

@@ -17,6 +17,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="audience")
+/**
+ *  Tabla audience
+ */
 public class Audience implements Serializable {
 
     @Id
@@ -63,70 +66,118 @@ public class Audience implements Serializable {
      * para llamar los dtaos de reservation
      */
     private List<Reservation> reservations;
-
+    
+    /**
+     * 
+     * @return
+     */
     public Integer getId() {
         return id;
     }
-
+    /**
+     * 
+     * @param id
+     */
     public void setId(Integer id) {
         this.id = id;
     }
-
+    /**
+     * 
+     * @return
+     */
     public String getName() {
         return name;
     }
-
+    /**
+     * 
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
-
+    /**
+     * 
+     * @return
+     */
     public String getOwner() {
         return owner;
     }
-
+    /**
+     * 
+     * @param owner
+     */
     public void setOwner(String owner) {
         this.owner = owner;
     }
-
+    /**
+     * 
+     * @return
+     */
     public Integer getCapacity() {
         return capacity;
     }
-
+    /**
+     * 
+     * @param capacity
+     */
     public void setCapacity(Integer capacity) {
         this.capacity = capacity;
     }
-
+    /**
+     * 
+     * @return
+     */
     public String getDescription() {
         return description;
     }
-
+    /**
+     * 
+     * @param description
+     */
     public void setDescription(String description) {
         this.description = description;
     }
-
+    /**
+     * 
+     * @return
+     */
     public Category getCategory() {
         return category;
     }
-
+    /**
+     * 
+     * @param category
+     */
     public void setCategory(Category category) {
         this.category = category;
     }
-
+    /**
+     * 
+     * @return
+     */
     public List<Message> getMessages() {
         return messages;
     }
-
+    /**
+     * 
+     * @param messages
+     */
     public void setMessages(List<Message> messages) {
         this.messages = messages;
     }
-
+    /**
+     * 
+     * @return
+     */
     public List<Reservation> getReservations() {
         return reservations;
     }
-
+    /**
+     * 
+     * @param reservations
+     */
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
     }   
     
-
 }

@@ -50,4 +50,30 @@ public class MessageService {
 
     }
 
+    public Message update(Message msg){
+        if(msg.getIdMessage()!=null){
+            Optional<Message> msgaux= messageRepository.getMessage(msg.getIdMessage());
+            if(!msgaux.isEmpty()){
+                if(msg.getMessageText()!=null){
+                    msgaux.get().setMessageText(msg.getMessageText());
+                }
+                messageRepository.save(msgaux.get());
+                return msgaux.get();
+            }else{
+                return msg;
+            }
+        }else{
+            return msg;
+        }
+    }
+
+    public boolean deleteMessage(int messageId) {
+        Boolean aBoolean = getMessage(messageId).map(msg -> {
+            messageRepository.delete(msg);
+            return true;
+        }).orElse(false);
+        return aBoolean;
+    }
+
+
 }
